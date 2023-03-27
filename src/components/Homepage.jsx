@@ -49,6 +49,7 @@ const Homepage = () => {
     }
     
     const handleSingleClick=(id)=>{
+        setRender(true)
         setSingle(id)
     }
 
@@ -112,7 +113,8 @@ const Homepage = () => {
                             
                                 return (
                                     
-                                    <tr key={ele.Mfr_ID} value={ele.Mfr_ID} onClick={(e)=>{handleSingleClick(ele.Mfr_ID)}}>
+                                    <tr key={ele.Mfr_ID} value={ele.Mfr_ID} onClick={()=>{setRender(true)
+                                        setSingle(ele.Mfr_ID)}}>
                                         <td>{ele.Mfr_Name}</td>
                                         <td>{ele.Country}</td>
                                         <td>{type}</td>
@@ -124,7 +126,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            {render && <Singlecomponent setSingle={[single, setRender]}></Singlecomponent>}
+            {render && <Singlecomponent setRender={setRender} id={single}></Singlecomponent>}
         </>
     )
 }
